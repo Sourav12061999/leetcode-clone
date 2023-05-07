@@ -1,2 +1,3 @@
 import AuthRouter from "./Auth";
-export { AuthRouter };
+import QuestionRouter from "./Question";
+export { AuthRouter, QuestionRouter };
