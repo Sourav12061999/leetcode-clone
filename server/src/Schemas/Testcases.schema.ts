@@ -1,5 +1,5 @@
 import { Schema, model, Document } from "mongoose";
-import { QuestionSchemaTypes } from "./question.schema";
+import { QuestionSchemaTypes } from "./Question.schema";
 export interface TestcaseTypes {
   QuesID: QuestionSchemaTypes["_id"];
   params: string[];
