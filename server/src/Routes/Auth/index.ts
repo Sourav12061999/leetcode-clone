@@ -101,4 +101,15 @@ router.post("/signup", async (req: Request, res: Response) => {
   }
 });
 
+router.get("/user", async (req: Request, res: Response) => {
+  try {
+  } catch (error) {
+    res.status(400).json({
+      isError: true,
+      isSuccess: false,
+      error,
+    });
+  }
+});
+
 export default router;
