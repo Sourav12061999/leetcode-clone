@@ -4,6 +4,7 @@ import { compare, hash } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { JWT_SECRET } from "../../constants";
 import { genSalt } from "bcrypt";
+import { AuthMiddleware, AuthRoles } from "../../middleware";
 
 const router = Router();
 
@@ -74,6 +75,17 @@ router.post("/signup", async (req: Request, res: Response) => {
       });
       return;
     }
+
+    const userExists = await UserModel.findOne({ email }).lean().exec();
+    if (userExists) {
+      return res.status(200).json({
+        isError: false,
+        isSuccess: false,
+        error: {
+          message: "User already exists. Please signin",
+        },
+      });
+    }
     const salt = await genSalt(2);
     const hashedPassowrd = await hash(password, salt);
     const user = await UserModel.create({
@@ -101,15 +113,24 @@ router.post("/signup", async (req: Request, res: Response) => {
   }
 });
 
-router.get("/user", async (req: Request, res: Response) => {
-  try {
-  } catch (error) {
-    res.status(400).json({
-      isError: true,
-      isSuccess: false,
-      error,
-    });
+router.get(
+  "/user",
+  AuthMiddleware(AuthRoles.User),
+  async (req: Request, res: Response) => {
+    try {
+      res.status(200).json({
+        isError: false,
+        isSuccess: true,
+        data: res.locals.user,
+      });
+    } catch (error) {
+      res.status(400).json({
+        isError: true,
+        isSuccess: false,
+        error,
+      });
+    }
   }
-});
+);
 
 export default router;
