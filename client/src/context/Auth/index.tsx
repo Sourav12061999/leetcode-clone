@@ -1,6 +1,6 @@
-import { AuthType, ServerResponseType, UserType } from "@/Types";
-import { ContextProps } from "@/Types";
-import { BACKEND_SERVER_URL } from "@/globals";
+import { AuthType, ServerResponseType, UserType } from "../../Types";
+import { ContextProps } from "../../Types";
+import { BACKEND_SERVER_URL } from "../../globals";
 import React, { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext<AuthType | null>(null);
