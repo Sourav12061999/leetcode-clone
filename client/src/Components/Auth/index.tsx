@@ -12,7 +12,10 @@ import {
 } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-export default function AuthForm() {
+type PropTypes = {
+  type: "Signup" | "Signin";
+};
+export default function AuthForm({ type }: PropTypes) {
   return (
     <Container size={420} my={40}>
       <Title
@@ -22,18 +25,30 @@ export default function AuthForm() {
           fontWeight: 900,
         })}
       >
-        Welcome back!
+        {type !== "Signin" ? "Create an account" : "Welcome back!"}
       </Title>
-      <Text color="dimmed" size="sm" align="center" mt={5}>
-        Do not have an account yet?{" "}
-        <Link to={"/signup"}>
-          <Anchor size="sm" component="button">
-            Create account
-          </Anchor>
-        </Link>
-      </Text>
+      {type !== "Signup" ? (
+        <Text color="dimmed" size="sm" align="center" mt={5}>
+          Do not have an account yet?{" "}
+          <Link to={"/signup"}>
+            <Anchor size="sm" component="button">
+              Create account
+            </Anchor>
+          </Link>
+        </Text>
+      ) : (
+        <Text color="dimmed" size="sm" align="center" mt={5}>
+          Already have an account?{" "}
+          <Link to={"/signin"}>
+            <Anchor size="sm" component="button">
+              Sign in
+            </Anchor>
+          </Link>
+        </Text>
+      )}
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+        {type === "Signup" && <TextInput label="Name" required mt="md" />}
         <TextInput label="Email" placeholder="you@mantine.dev" required />
         <PasswordInput
           label="Password"
@@ -48,7 +63,7 @@ export default function AuthForm() {
           </Anchor>
         </Group>
         <Button fullWidth mt="xl">
-          Sign in
+          {type === "Signup" ? "Sign up" : "Sign in"}
         </Button>
       </Paper>
     </Container>

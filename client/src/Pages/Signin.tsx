@@ -3,7 +3,7 @@ import { AuthForm } from "../Components";
 function Signin() {
   return (
     <>
-      <AuthForm />
+      <AuthForm type="Signin" />
     </>
   );
 }
