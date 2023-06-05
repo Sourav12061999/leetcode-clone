@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import { useStyles } from "../styles";
 import { BsChevronDown } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 type PropTypes = {
   closeDrawer: () => void;
@@ -45,9 +46,9 @@ function NavDraw({
           color={theme.colorScheme === "dark" ? "dark.5" : "gray.1"}
         />
 
-        <a href="#" className={classes.link}>
+        <Link to="/" className={classes.link}>
           Home
-        </a>
+        </Link>
         <UnstyledButton className={classes.link} onClick={toggleLinks}>
           <Center inline>
             <Box component="span" mr={5}>
@@ -57,12 +58,12 @@ function NavDraw({
           </Center>
         </UnstyledButton>
         <Collapse in={linksOpened}>{children}</Collapse>
-        <a href="#" className={classes.link}>
+        <Link to="/learn" className={classes.link}>
           Learn
-        </a>
-        <a href="#" className={classes.link}>
+        </Link>
+        <Link to="/academy" className={classes.link}>
           Academy
-        </a>
+        </Link>
 
         <Divider
           my="sm"

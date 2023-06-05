@@ -4,4 +4,5 @@ export type LinkTypes = {
   icon: IconType;
   title: string;
   description: string;
+  link?: string;
 };

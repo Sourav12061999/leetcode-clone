@@ -28,14 +28,12 @@ function Features({ children }: PropTypes) {
       withinPortal
     >
       <HoverCard.Target>
-        <a href="#" className={classes.link}>
-          <Center inline>
-            <Box component="span" mr={5}>
-              Features
-            </Box>
-            <BsChevronDown size={16} color={theme.fn.primaryColor()} />
-          </Center>
-        </a>
+        <Center inline>
+          <Box component="span" mr={5}>
+            Features
+          </Box>
+          <BsChevronDown size={16} color={theme.fn.primaryColor()} />
+        </Center>
       </HoverCard.Target>
 
       <HoverCard.Dropdown sx={{ overflow: "hidden" }}>

@@ -9,6 +9,7 @@ import NavDraw from "./Components/NavDraw";
 import Features from "./Components/Features";
 import { LinkTypes } from "./index.types";
 import NavLink from "./Components/NavLink";
+import { Link } from "react-router-dom";
 
 const NavData: LinkTypes[] = [
   {
@@ -61,16 +62,16 @@ export default function Navbar() {
             spacing={0}
             className={classes.hiddenMobile}
           >
-            <a href="#" className={classes.link}>
+            <Link to="/" className={classes.link}>
               Home
-            </a>
+            </Link>
             <Features>{links}</Features>
-            <a href="#" className={classes.link}>
+            <Link to="/learn" className={classes.link}>
               Learn
-            </a>
-            <a href="#" className={classes.link}>
+            </Link>
+            <Link to="/academy" className={classes.link}>
               Academy
-            </a>
+            </Link>
           </Group>
 
           <Group className={classes.hiddenMobile}>
