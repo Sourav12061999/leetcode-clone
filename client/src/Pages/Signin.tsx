@@ -1,7 +1,11 @@
 import React from "react";
-
+import { AuthForm } from "../Components";
 function Signin() {
-  return <div>Signin</div>;
+  return (
+    <>
+      <AuthForm />
+    </>
+  );
 }
 
 export default Signin;
