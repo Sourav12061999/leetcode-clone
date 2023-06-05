@@ -12,16 +12,18 @@ function Auth({ placement }: PropTypes) {
   const authContext = useContext(AuthContext);
   return (
     <>
-      {authContext?.isAuthenticated ? (
+      {authContext?.authData.isAuthenticated ? (
         <>
           {placement === "Drawer" ? (
             <UserButton
-              text={authContext.userData?.name[0].toUpperCase()}
-              name={authContext.userData?.name}
-              email={authContext.userData?.email}
+              text={authContext.authData.userData?.name[0].toUpperCase()}
+              name={authContext.authData.userData?.name}
+              email={authContext.authData.userData?.email}
             />
           ) : (
-            <Avatar>{authContext.userData?.name[0].toUpperCase()}</Avatar>
+            <Avatar>
+              {authContext.authData.userData?.name[0].toUpperCase()}
+            </Avatar>
           )}
         </>
       ) : (

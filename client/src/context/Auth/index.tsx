@@ -3,7 +3,10 @@ import { ContextProps } from "../../Types";
 import { BACKEND_SERVER_URL } from "../../globals";
 import React, { createContext, useState, useEffect } from "react";
 
-export const AuthContext = createContext<AuthType | null>(null);
+export const AuthContext = createContext<{
+  authData: AuthType;
+  setAuthData: React.Dispatch<React.SetStateAction<AuthType>>;
+} | null>(null);
 
 function AuthContextProvider({ children }: ContextProps) {
   const [authData, setAuthData] = useState<AuthType>({
@@ -38,7 +41,9 @@ function AuthContextProvider({ children }: ContextProps) {
   }, []);
 
   return (
-    <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ authData, setAuthData }}>
+      {children}
+    </AuthContext.Provider>
   );
 }
 
