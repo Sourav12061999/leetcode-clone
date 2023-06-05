@@ -9,11 +9,11 @@ import {
   Box,
   Center,
   Group,
-  Button,
 } from "@mantine/core";
 import { useStyles } from "../styles";
 import { BsChevronDown } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Auth from "./Auth";
 
 type PropTypes = {
   closeDrawer: () => void;
@@ -71,8 +71,7 @@ function NavDraw({
         />
 
         <Group position="center" grow pb="xl" px="md">
-          <Button variant="default">Log in</Button>
-          <Button>Sign up</Button>
+          <Auth placement="Drawer" />
         </Group>
       </ScrollArea>
     </Drawer>

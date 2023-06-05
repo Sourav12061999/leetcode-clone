@@ -1,4 +1,4 @@
-import { Header, Group, Button, Box, Burger } from "@mantine/core";
+import { Header, Group, Box, Burger } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { BiCodeBlock } from "react-icons/bi";
@@ -10,6 +10,7 @@ import Features from "./Components/Features";
 import { LinkTypes } from "./index.types";
 import NavLink from "./Components/NavLink";
 import { Link } from "react-router-dom";
+import Auth from "./Components/Auth";
 
 const NavData: LinkTypes[] = [
   {
@@ -75,8 +76,7 @@ export default function Navbar() {
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Auth placement="Navbar" />
           </Group>
 
           <Burger
